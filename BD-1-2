@@ -1,0 +1,18 @@
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("BigDataPractice").getOrCreate()
+
+data = [("Ali", 34), ("Budi", 23), ("Citra", 29), ("Dina", 45)]
+columns = ["Nama","Usia"]
+df = spark.createDataFrame(data, columns)
+
+df.show()
+
+df_filtered = df.filter(df["Usia"] > 30)
+df_filtered.show()
+
+from pyspark.sql.functions import avg
+df.groupBy().agg(avg("Usia")).show()
+
+df_sorted = df.orderBy("Usia", ascending=False)
+df_sorted.show()
