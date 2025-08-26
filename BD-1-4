@@ -1,0 +1,15 @@
+import pandas as pd
+
+data_pandas = [
+    ("Ali", 34, "Petani", "Membaca", "Laki-laki"),
+    ("Budi", 23, "Desainer", "Bermain Game", "Laki-laki"),
+    ("Citra", 29, "Dokter", "Traveling", "Perempuan"),
+    ("Dina", 45, "Guru", "Memasak", "Perempuan")
+]
+columns_pandas = ["Nama", "Usia", "Pekerjaan", "Hobby", "Gender"]
+df_pandas = pd.DataFrame(data_pandas, columns=columns_pandas)
+
+average_age = df_pandas["Usia"].mean()
+print(f"Rata - rata usia: {average_age}")
+
+df_pandas
