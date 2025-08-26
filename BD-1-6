@@ -1,0 +1,45 @@
+import pandas
+import matplotlib.pyplot as plt
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("BigDataPractice").getOrCreate()
+
+pyspark_data = [
+    ("Ali", 34),
+    ("Budi", 23),
+    ("Citra", 29),
+    ("Dina", 45)
+]
+pyspark_columns = ["Nama", "Usia"]
+pyspark_df = spark.createDataFrame(pyspark_data, pyspark_columns)
+
+print("PySpark:")
+pyspark_df.show()
+
+df_pandas_1 = pyspark_df.toPandas()
+
+print("Konversi PySpark ke Pandas:")
+print(df_pandas_1)
+
+data_pandas_2 = {
+    "Nama": ["Ali", "Budi", "Citra", "Dina"],
+    "Pekerjaan": ["Petani", "Desainer", "Dokter", "Guru"],
+    "Hobi": ["Membaca", "Bermain Game", "Traveling", "Memasak"],
+    "Gender": ["Laki-laki", "Laki-laki", "Perempuan", "Perempuan"]
+}
+df_pandas_2 = pandas.DataFrame(data_pandas_2)
+
+print("\nPandas:")
+print(df_pandas_2)
+
+df_joined = pandas.merge(df_pandas_1, df_pandas_2, on="Nama")
+
+print("\nJoin:")
+print(df_joined)
+
+average = df_pandas_from_spark["Usia"].mean()
+print(f"\nRata rata usia: {average}")
+
+print("\n")
+df_joined["Usia"].plot(kind="bar")
+plt.show()
