@@ -1,0 +1,15 @@
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("BigDataPractice").getOrCreate()
+
+data = [
+    ("Ali", 34, "Petani", "Membaca", "Laki-laki"),
+    ("Budi", 23, "Desainer", "Bermain Game", "Laki-laki"),
+    ("Citra", 29, "Dokter", "Traveling", "Perempuan"),
+    ("Dina", 45, "Guru", "Memasak", "Perempuan")
+]
+
+columns = ["Nama", "Usia", "Pekerjaan", "Hobby", "Gender"]
+df = spark.createDataFrame(data, columns)
+
+df.show()
