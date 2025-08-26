@@ -1,0 +1,16 @@
+import pandas as pd
+
+# Membuat DataFrame Pandas
+data_pandas = {[
+    ("Ali", 34, "Petani", "Membaca", "Laki-laki"),
+    ("Budi", 23, "Desainer", "Bermain Game", "Laki-laki"),
+    ("Citra", 29, "Dokter", "Traveling", "Perempuan"),
+    ("Dina", 45, "Guru", "Memasak", "Perempuan")
+]}
+df_pandas = pd.DataFrame(data_pandas)
+
+average_age = df_pandas["Usia"].mean()
+print(f"Rata - rata usia: {average_age}")
+
+# Menampilkan DataFrame Pandas
+df_pandas
